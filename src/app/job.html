@@ -1,0 +1,14 @@
+@if (details(); as details) {
+  <div role="listitem" class="grid gap-2 rounded border border-solid border-[#dcdcdc] bg-white p-6">
+    @if (details.url; as jobUrl) {
+      <h2 class="font-bold">
+        {{ details.id }} -
+        <a [href]="jobUrl" target="_blank" class="hover:underline">{{ details.title }}</a>
+      </h2>
+    } @else {
+      <h2 class="font-bold">{{ details.title }}</h2>
+    }
+
+    <p class="text-sm">By {{ details.by }} - {{ details.time | date: 'medium' }}</p>
+  </div>
+}
