@@ -1,24 +1,23 @@
-import { Component, DestroyRef, effect, inject, input, resource, signal } from '@angular/core';
-import { HackerJob, HackerNewsClient } from './hacker-news-client';
+import { Component, DestroyRef, effect, inject, input, signal } from '@angular/core';
+import { Job, JobClient } from './job-client';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { DatePipe } from '@angular/common';
-import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-job',
+  selector: 'app-job-card',
   imports: [DatePipe],
-  templateUrl: './job.html',
+  templateUrl: './job-card.html',
 })
-export class Job {
+export class JobCard {
   id = input.required<number>();
-  details = signal<HackerJob | null>(null);
+  details = signal<Job | null>(null);
 
-  private readonly hackerNewsClient = inject(HackerNewsClient);
+  private readonly jobClient = inject(JobClient);
   private readonly destroyRef = inject(DestroyRef);
 
   constructor() {
     effect(() => {
-      this.hackerNewsClient
+      this.jobClient
         .loadJob(this.id())
         .pipe(takeUntilDestroyed(this.destroyRef))
         .subscribe({

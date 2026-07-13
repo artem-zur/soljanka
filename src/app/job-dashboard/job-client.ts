@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-export type HackerJobStories = number[];
+export type JobStories = number[];
 
-export interface HackerJob {
+export interface Job {
   by?: string;
   id?: number;
   score?: number;
@@ -15,16 +15,16 @@ export interface HackerJob {
 }
 
 @Injectable({ providedIn: 'root' })
-export class HackerNewsClient {
+export class JobClient {
   private readonly http = inject(HttpClient);
 
   private readonly apiBaseUrl = 'https://hacker-news.firebaseio.com/v0';
 
-  loadJobStories(): Observable<HackerJobStories> {
-    return this.http.get<HackerJobStories>(`${this.apiBaseUrl}/jobstories.json`);
+  loadJobStories(): Observable<JobStories> {
+    return this.http.get<JobStories>(`${this.apiBaseUrl}/jobstories.json`);
   }
 
-  loadJob(jobId: number): Observable<HackerJob> {
-    return this.http.get<HackerJob>(`${this.apiBaseUrl}/item/${jobId}.json`);
+  loadJob(jobId: number): Observable<Job> {
+    return this.http.get<Job>(`${this.apiBaseUrl}/item/${jobId}.json`);
   }
 }
