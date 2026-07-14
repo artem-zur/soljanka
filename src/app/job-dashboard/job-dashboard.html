@@ -1,16 +1,18 @@
-<h1 class="mb-6 text-2xl font-bold text-[#ff6600]">Hacker News Jobs Board</h1>
+<main class="min-h-screen bg-[#f6f6ef] p-4">
+  <h1 class="mb-6 text-2xl font-bold text-[#ff6600]">Hacker News Jobs Board</h1>
 
-<div role="list" class="grid gap-4">
-  @for (story of jobStoriesToDisplay(); track story) {
-    <app-job-card [id]="story"></app-job-card>
+  <div role="list" class="grid gap-4">
+    @for (story of jobStoriesToDisplay(); track story) {
+      <app-job-card [id]="story"></app-job-card>
+    }
+  </div>
+
+  @if (isDisplayLoadMore()) {
+    <button
+      (click)="loadMore()"
+      class="mt-5 cursor-pointer rounded bg-[#ff6600] pt-2 pr-3 pb-2 pl-3 text-white hover:bg-[#e65c00]"
+    >
+      Load more jobs
+    </button>
   }
-</div>
-
-@if (isDisplayLoadMore()) {
-  <button
-    (click)="loadMore()"
-    class="mt-5 cursor-pointer rounded bg-[#ff6600] pt-2 pr-3 pb-2 pl-3 text-white hover:bg-[#e65c00]"
-  >
-    Load more jobs
-  </button>
-}
+</main>
