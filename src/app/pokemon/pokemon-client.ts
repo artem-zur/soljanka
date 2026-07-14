@@ -32,7 +32,7 @@ export class PokemonClient {
 
   private readonly apiBaseUrl = 'https://pokeapi.co/api/v2';
 
-  loadByName(name: string): Observable<Pokemon> {
-    return this.http.get<Pokemon>(`${this.apiBaseUrl}/pokemon/${name}`);
+  loadBy(nameOrId: string | number): Observable<Pokemon> {
+    return this.http.get<Pokemon>(`${this.apiBaseUrl}/pokemon/${nameOrId}`);
   }
 }

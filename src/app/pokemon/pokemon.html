@@ -11,7 +11,7 @@
     <div class="flex flex-col gap-4 md:flex-row">
       <div class="rounded-md bg-[#F2F2F2]">
         <img
-          ngSrc="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
+          [ngSrc]="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`"
           width="475"
           height="475"
           class="mx-auto"
@@ -53,8 +53,8 @@
           <div class="flex flex-row gap-1.5">
             @for (item of pokemon.types; track item.type.name) {
               <div
-                [class]="'bg-' + item.type.name"
-                class="w-1/3 rounded-md pt-2 pb-2 text-center leading-none capitalize"
+                [class]="'pokemon-type-' + item.type.name"
+                class="pokemon-type w-1/3 rounded-md pt-2 pb-2 text-center leading-none capitalize"
               >
                 {{ item.type.name }}
               </div>

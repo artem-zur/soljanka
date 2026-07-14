@@ -2,6 +2,7 @@ import { Component, inject, input } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { PokemonClient } from './pokemon-client';
 import { NgOptimizedImage } from '@angular/common';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-pokemon',
@@ -10,13 +11,13 @@ import { NgOptimizedImage } from '@angular/common';
   templateUrl: './pokemon.html',
 })
 export class Pokemon {
-  name = input.required<string>();
+  nameOrId = input.required<string>();
 
   private readonly pokemonClient = inject(PokemonClient);
 
   // TODO: Cache loaded Pokemon because it rarely changes
   public readonly pokemonResource = rxResource({
-    params: () => ({ name: this.name() }),
-    stream: ({ params }) => this.pokemonClient.loadByName(params.name),
+    params: () => ({ identifier: this.nameOrId() }),
+    stream: ({ params }) => this.pokemonClient.loadBy(params.identifier),
   });
 }

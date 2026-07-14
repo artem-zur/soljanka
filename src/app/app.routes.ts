@@ -17,12 +17,12 @@ export const routes: Routes = [
     title: 'Pokémon',
     children: [
       {
-        path: ':name',
-        component: Pokemon,
-      },
-      {
         path: 'random',
         component: PokemonRandom,
+      },
+      {
+        path: ':nameOrId',
+        component: Pokemon,
       },
       {
         path: '**',
