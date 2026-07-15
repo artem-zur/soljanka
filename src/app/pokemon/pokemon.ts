@@ -3,10 +3,11 @@ import { rxResource } from '@angular/core/rxjs-interop';
 import { PokemonClient } from './pokemon-client';
 import { NgOptimizedImage } from '@angular/common';
 import { PokemonAvatar } from './pokemon-avatar';
+import { Pokeball } from './pokeball';
 
 @Component({
   selector: 'app-pokemon',
-  imports: [NgOptimizedImage, PokemonAvatar],
+  imports: [PokemonAvatar, Pokeball],
   styleUrls: ['./pokemon.scss'],
   templateUrl: './pokemon.html',
 })
@@ -16,7 +17,7 @@ export class Pokemon {
   private readonly pokemonClient = inject(PokemonClient);
 
   // TODO: Cache loaded Pokemon because it rarely changes
-  public readonly pokemonResource = rxResource({
+  readonly pokemonResource = rxResource({
     params: () => ({ identifier: this.nameOrId() }),
     stream: ({ params }) => this.pokemonClient.loadBy(params.identifier),
   });

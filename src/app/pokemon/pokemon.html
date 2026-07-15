@@ -1,5 +1,5 @@
 @if (pokemonResource.isLoading()) {
-  <img ngSrc="pokeball.png" width="32" height="32" class="mx-auto animate-spin" priority />
+  <app-pokeball />
 } @else {
   @let pokemon = pokemonResource.value();
 
