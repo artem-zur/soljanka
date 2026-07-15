@@ -12,7 +12,7 @@ import { Pokeball } from './pokeball';
   templateUrl: './pokemon.html',
 })
 export class Pokemon {
-  nameOrId = input.required<string>();
+  readonly nameOrId = input.required<string>();
 
   private readonly pokemonClient = inject(PokemonClient);
 

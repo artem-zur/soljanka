@@ -1,1 +1,15 @@
 <img ngSrc="pokemon-logo.png" width="220" height="80" class="mx-auto mb-4" priority />
+
+@if (pokemonListResource.isLoading()) {
+  <app-pokeball />
+} @else {
+  @let pokemonList = pokemonListResource.value();
+
+  @if (pokemonList) {
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-4">
+      @for (pokemon of pokemonList.results; track pokemon.name) {
+        <app-pokemon-card [pokemon]="pokemon"></app-pokemon-card>
+      }
+    </div>
+  }
+}

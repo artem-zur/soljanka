@@ -24,6 +24,15 @@ export interface Pokemon {
   abilities: PokemonAbility[];
 }
 
+export interface PokemonSummary {
+  name: string;
+  url: string;
+}
+
+export interface PokemonList {
+  results: PokemonSummary[];
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -31,6 +40,10 @@ export class PokemonClient {
   private readonly http = inject(HttpClient);
 
   private readonly apiBaseUrl = 'https://pokeapi.co/api/v2';
+
+  load(): Observable<PokemonList> {
+    return this.http.get<PokemonList>(`${this.apiBaseUrl}/pokemon`);
+  }
 
   loadBy(nameOrId: string | number): Observable<Pokemon> {
     return this.http.get<Pokemon>(`${this.apiBaseUrl}/pokemon/${nameOrId}`);
