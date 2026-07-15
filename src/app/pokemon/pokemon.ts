@@ -2,11 +2,11 @@ import { Component, inject, input } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { PokemonClient } from './pokemon-client';
 import { NgOptimizedImage } from '@angular/common';
-import { of } from 'rxjs';
+import { PokemonAvatar } from './pokemon-avatar';
 
 @Component({
   selector: 'app-pokemon',
-  imports: [NgOptimizedImage],
+  imports: [NgOptimizedImage, PokemonAvatar],
   styleUrls: ['./pokemon.scss'],
   templateUrl: './pokemon.html',
 })
