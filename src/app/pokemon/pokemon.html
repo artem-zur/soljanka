@@ -8,14 +8,14 @@
       {{ pokemon.name }} <span class="text-[#616161]">#{{ pokemon.id }}</span>
     </h1>
 
-    <div class="flex flex-col gap-4 md:flex-row">
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
       <app-pokemon-avatar
         [pokemonId]="pokemon.id"
         [width]="475"
         [height]="475"
       ></app-pokemon-avatar>
 
-      <div class="flex-1">
+      <div class="pokemon-details">
         <div class="grid grid-cols-1 gap-4 rounded-md bg-[#30a7d7] p-5 text-white md:grid-cols-2">
           <!-- TODO: We can additionally add Stats -->
           <div class="flex flex-col gap-3">
