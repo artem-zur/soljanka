@@ -1,12 +1,14 @@
-@let id = pokemonId();
+<div class="transition-transform duration-300 hover:-translate-y-1">
+  @let id = pokemonId();
 
-@if (id) {
-  <a [routerLink]="[id]">
-    <app-pokemon-avatar [pokemonId]="id" [width]="205" [height]="205"></app-pokemon-avatar>
-  </a>
-}
+  @if (id) {
+    <a [routerLink]="[id]">
+      <app-pokemon-avatar [pokemonId]="id" [width]="205" [height]="205"></app-pokemon-avatar>
+    </a>
+  }
 
-<div class="pl-3.5 capitalize">
-  <span class="mt-0.5 text-xs text-[#919191]">#{{ id }}</span>
-  <h5 class="mt-1 mb-1 text-xl text-[#313131]">{{ pokemon().name }}</h5>
+  <div class="pl-3.5 capitalize">
+    <span class="mt-0.5 text-xs text-[#919191]">#{{ id }}</span>
+    <h5 class="mt-1 mb-1 text-xl text-[#313131]">{{ pokemon().name }}</h5>
+  </div>
 </div>
