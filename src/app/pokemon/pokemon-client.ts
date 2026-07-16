@@ -30,6 +30,7 @@ export interface PokemonSummary {
 }
 
 export interface PokemonList {
+  next?: string;
   results: PokemonSummary[];
 }
 
@@ -39,13 +40,15 @@ export interface PokemonList {
 export class PokemonClient {
   private readonly http = inject(HttpClient);
 
-  private readonly apiBaseUrl = 'https://pokeapi.co/api/v2';
+  private readonly API_BASE_URL = 'https://pokeapi.co/api/v2';
 
-  load(): Observable<PokemonList> {
-    return this.http.get<PokemonList>(`${this.apiBaseUrl}/pokemon`);
+  load(offset: number, limit: number): Observable<PokemonList> {
+    return this.http.get<PokemonList>(`${this.API_BASE_URL}/pokemon`, {
+      params: { offset, limit },
+    });
   }
 
   loadBy(nameOrId: string | number): Observable<Pokemon> {
-    return this.http.get<Pokemon>(`${this.apiBaseUrl}/pokemon/${nameOrId}`);
+    return this.http.get<Pokemon>(`${this.API_BASE_URL}/pokemon/${nameOrId}`);
   }
 }
