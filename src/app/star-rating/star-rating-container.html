@@ -1,0 +1,19 @@
+<div class="p-8">
+  <div class="mb-6">
+    <p>Star Rating #1:</p>
+    <app-star-rating [max]="5" [initial]="0" (changed)="logRating($event)"></app-star-rating>
+
+    @let latest = latestSelected();
+
+    @if (latest) {
+      <p>The Rating was changed to {{ latest }}.</p>
+    } @else {
+      <p>The Rating was not yet changed by a User.</p>
+    }
+  </div>
+
+  <div>
+    <p>Star Rating #2:</p>
+    <app-star-rating [max]="10" [initial]="2"></app-star-rating>
+  </div>
+</div>

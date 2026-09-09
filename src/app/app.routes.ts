@@ -4,6 +4,7 @@ import { JobDashboard } from './job-dashboard/job-dashboard';
 import { PokemonBoard } from './pokemon/pokemon-board';
 import { PokemonRandom } from './pokemon/pokemon-random';
 import { PokemonContainer } from './pokemon/pokemon-container';
+import { StarRatingContainer } from './star-rating/star-rating-container';
 
 export const routes: Routes = [
   {
@@ -29,5 +30,10 @@ export const routes: Routes = [
         component: PokemonBoard,
       },
     ],
+  },
+  {
+    path: 'star-rating',
+    component: StarRatingContainer,
+    title: 'Star Rating',
   },
 ];
