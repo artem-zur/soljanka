@@ -17,7 +17,7 @@ export class StarRating implements OnInit {
   readonly initial = input<number>(0);
 
   /** Rating changed to the following number. */
-  changed = output<number>();
+  readonly changed = output<number>();
 
   readonly stars: Signal<Star[]> = computed(() => {
     return Array.from({ length: this.max() }, (_item, index) => ({
